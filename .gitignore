@@ -1,3 +1,6 @@
+# Virtual env
+pinecone/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

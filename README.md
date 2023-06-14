@@ -54,6 +54,7 @@ To use these functions in your project, import the file at the top and include t
 ```py
 import os
 import pinecone_client
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -69,6 +70,29 @@ pinecone_client.pinecone_init(PINECONE_API_KEY, PINECONE_ENVIRONMENT)
 # Create an index
 index_name = 'my-index'
 pinecone_client.create_index(index_name, int(INDEX_DIMENSION), INDEX_METRIC)
+```
+
+Or only import the functions you need.
+
+```py
+import os
+from pinecone_client import pinecone_init, create_index
+
+from dotenv import load_dotenv
+load_dotenv()
+
+# Init API key, environment, and dimentions
+PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
+PINECONE_ENVIRONMENT = os.getenv('PINECONE_ENVIRONMENT')
+INDEX_DIMENSION = os.getenv('INDEX_DIMENSION')
+INDEX_METRIC = os.getenv('INDEX_METRIC')
+
+# Initialize Pinecone
+pinecone_init(PINECONE_API_KEY, PINECONE_ENVIRONMENT)
+
+# Create an index
+index_name = 'my-index'
+create_index(index_name, int(INDEX_DIMENSION), INDEX_METRIC)
 ```
 
 > Note that you must pass the index dimension as `int` if you use environment variables.
